@@ -2,6 +2,7 @@
 The little test api for create articles by user
 
 ## Setup API
+for first create your own .env file, look at env.example
 for start API you need make sure you run Mongo on your local machine , go to the api directory and write this command
 ```
 $ npm install
