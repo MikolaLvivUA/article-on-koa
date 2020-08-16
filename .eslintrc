@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "comma-dangle": 0,
+    "max-len": [2, {"code": 120}],
+    "consistent-return": 0,
+    "quote-props": 0
+  }
+}
