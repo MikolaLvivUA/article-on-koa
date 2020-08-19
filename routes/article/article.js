@@ -21,7 +21,7 @@ router.get('/:uuid', async (ctx) => {
     ctx.status = responseStatusCodeEnum.OK;
   } catch (e) {
     ctx.body = e.message;
-    ctx.status = e.status || 500;
+    ctx.status = e.status;
   }
 });
 // Get All articles
@@ -39,7 +39,7 @@ router.get('/', async (ctx) => {
     ctx.status = responseStatusCodeEnum.OK;
   } catch (e) {
     ctx.body = e.message;
-    ctx.status = e.status || 500;
+    ctx.status = e.status;
   }
 });
 
@@ -66,7 +66,7 @@ router.post('/', async (ctx) => {
     ctx.status = responseStatusCodeEnum.CREATED;
   } catch (e) {
     ctx.body = e.message;
-    ctx.status = e.status || 500;
+    ctx.status = e.status;
   }
 });
 // Update Article by uuid
@@ -92,7 +92,7 @@ router.patch('/:uuid', async (ctx) => {
     ctx.status = responseStatusCodeEnum.CREATED;
   } catch (e) {
     ctx.body = e.message;
-    ctx.status = e.status || 500;
+    ctx.status = e.status;
   }
 });
 
@@ -116,7 +116,7 @@ router.delete('/:uuid', async (ctx) => {
     ctx.status = responseStatusCodeEnum.NO_CONTENT;
   } catch (e) {
     ctx.body = e.message;
-    ctx.status = e.status || 500;
+    ctx.status = e.status;
   }
 });
 

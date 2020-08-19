@@ -27,7 +27,7 @@ router.post('/', chekIsEmailExistMiidleware, async (ctx) => {
     ctx.body = { data: responseUser };
   } catch (e) {
     ctx.body = e.message;
-    ctx.body = e.status || 500;
+    ctx.body = e.status;
   }
 });
 // Delete User
@@ -51,7 +51,7 @@ router.delete('/:uuid', checkAccessTokenMiddleware, async (ctx) => {
     ctx.status = responseStatusCodeEnum.NO_CONTENT;
   } catch (e) {
     ctx.body = e.message;
-    ctx.body = e.status || 500;
+    ctx.body = e.status;
   }
 });
 

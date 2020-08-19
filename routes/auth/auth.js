@@ -29,7 +29,7 @@ router.post('/', async (ctx) => {
     ctx.body = tokens;
   } catch (e) {
     ctx.body = { error: e.message };
-    ctx.body = e.status || 500;
+    ctx.body = e.status;
     // await next(e);
   }
 });
@@ -44,7 +44,7 @@ router.post('/logout', checkAccessTokenMiddleware, async (ctx) => {
     ctx.status = responseStatusCodeEnum.OK;
   } catch (e) {
     ctx.body = { error: e.message };
-    ctx.body = e.status || 500;
+    ctx.body = e.status;
   }
 });
 
