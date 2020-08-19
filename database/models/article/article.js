@@ -7,7 +7,8 @@ const { Schema } = mongoose;
 const articleSchema = new Schema({
   uuid: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   authorUuid: {
     type: String,

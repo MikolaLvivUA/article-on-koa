@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const util = require('util');
 
 const { authService } = require('../../services');
 const { CustomException } = require('../../exceptions');
@@ -13,13 +14,9 @@ module.exports = async (ctx, next) => {
       throw new CustomException('No Token', responseStatusCodeEnum.BAD_REQUEST);
     }
 
-    await jwt.verify(token, 'secret', (err, decoded) => {
-      if (err) {
-        throw new CustomException(err.message, responseStatusCodeEnum.UNAUTHORIZED);
-      }
+    const asyncVerify = util.promisify(jwt.verify);
 
-      return decoded;
-    });
+    await asyncVerify(token, 'secret');
 
     const userByToken = await authService.findUserByToken(token);
 
@@ -31,7 +28,7 @@ module.exports = async (ctx, next) => {
     await next();
   } catch (e) {
     ctx.body = { error: e.message };
-    ctx.status = e.status;
+    ctx.body = e.status || 500;
     // await next(e);
   }
 };
